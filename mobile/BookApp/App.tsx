@@ -15,7 +15,7 @@ const App = () => {
 
   const fetchBooks = async () => {
     try {
-      const response = await axios.get('http://192.168.0.2:5000/books'); // Zastąp adresem swojego API
+      const response = await axios.get('http://192.168.0.2:5000/books');
       setBooks(response.data);
     } catch (error) {
       console.error('Błąd podczas pobierania książek', error);
@@ -27,10 +27,10 @@ const App = () => {
       await axios.post('http://192.168.0.2:5000/books', {
         title: newBookTitle,
         author: newBookAuthor,
-      }); // Zastąp adresem swojego API
+      });
       setNewBookTitle('');
       setNewBookAuthor('');
-      fetchBooks(); // Po dodaniu książki pobierz ponownie listę
+      fetchBooks();
     } catch (error) {
       console.error('Błąd podczas dodawania książki', error);
     }
@@ -38,8 +38,8 @@ const App = () => {
 
   const deleteBook = async (bookId) => {
     try {
-      await axios.delete(`http://192.168.0.2:5000/books/${bookId}`); // Zastąp adresem swojego API
-      fetchBooks(); // Po usunięciu książki pobierz ponownie listę
+      await axios.delete(`http://192.168.0.2:5000/books/${bookId}`);
+      fetchBooks();
     } catch (error) {
       console.error('Błąd podczas usuwania książki', error);
     }
@@ -50,12 +50,12 @@ const App = () => {
       await axios.put(`http://192.168.0.2:5000/books/${editingBook.id}`, {
         title: newBookTitle,
         author: newBookAuthor,
-      }); // Zastąp adresem swojego API
+      });
       setEditingBook(null);
       setNewBookTitle('');
       setNewBookAuthor('');
       setModalVisible(false);
-      fetchBooks(); // Po edycji książki pobierz ponownie listę
+      fetchBooks();
     } catch (error) {
       console.error('Błąd podczas edycji książki', error);
     }
